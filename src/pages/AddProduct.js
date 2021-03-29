@@ -3,29 +3,36 @@ import { ProductContext } from '../context/Products';
 import InputTitle from '../components/InputTitle'
 import Input from '../components/Input';
 import InputContainer from '../components/InputContainer';
+import { useHistory } from 'react-router-dom';
 
 const AddProduct = () => {
     const { addProduct } = useContext(ProductContext);
+    const history = useHistory()
     
-    const [name, setName] = useState('');
+    const [model, setModel] = useState('');
     const [year, setYear] = useState('');
-    const [brand, setBrand] = useState('');
-    const [memory, setMemory] = useState('');
-    const [price, setPrice] = useState('');
-    const [image, setImage] = useState('');
+    const [brand, setBrand] = useState('sony');
+    const [memory, setMemory] = useState('16GB');
+    const [dualSIM, setDualSIM] = useState(false)
+    const [nfc, setNfc] = useState(false)
+    const [fourG, setFourG] = useState(false)
+    const [screen4, setScreen4] = useState(false)
+    const [screen5, setScreen5] = useState(false)
+    const [screen6, setScreen6] = useState(false)
+    const [colorWhite, setColorWhite] = useState(false)
+    const [colorBlack, setColorBlack] = useState(false)
+    const [colorGold, setColorGold] = useState(false)
 
     const submitHandle = (e)=>{
         e.preventDefault();
-        console.log({ name, year, brand, memory, price, image });
+        console.log({ model, year, brand, memory, dualSIM, nfc, fourG });
         // validation
-        // alert
-        addProduct({ name, year, brand, memory, price, image })
-        setName('')
-        setYear('')
-        setBrand('')
-        setMemory('')
-        setPrice('')
-        setImage('')
+        if(!model || !year || !brand || !memory){
+            // alert
+        }else{
+            addProduct({ model, year, brand, memory, dualSIM, nfc, fourG })
+            history.push('/')
+        }
     }
 
     return (
@@ -34,13 +41,13 @@ const AddProduct = () => {
 
             <form onSubmit={submitHandle} className="add_product_form">
                 <InputContainer>
-                    <InputTitle title="Product Name" />
+                    <InputTitle title="Model" />
                     <Input
                         type="text"
                         name="name"
-                        setInput={setName}
+                        setInput={setModel}
                         required={true}
-                        InputValue={name}
+                        InputValue={model}
                         placeholder="Samsung S6"
                     />
                 </InputContainer>
@@ -59,50 +66,157 @@ const AddProduct = () => {
                 
                 <InputContainer>
                     <InputTitle title="Brand" />
-                    <Input
-                        type="text"
-                        name="brand"
-                        setInput={setBrand}
-                        required={true}
-                        InputValue={brand}
-                    />
+                    <select
+                        style={{ width: '98%', height: '30px' }}
+                        id="brandSearch"
+                        value={brand}
+                        onChange={(e) => setBrand(e.target.value)}
+                    >
+                        <option value='sony'>Sony</option>
+                        <option value='samsung'>Samsung</option>
+                        <option value='apple'>Apple</option>
+                        <option value='nokia'>Nokia</option>
+                        <option value='lg'>LG</option>
+                    </select>
                 </InputContainer>
                 
                 <InputContainer>
                     <InputTitle title="Memory" />
-                    <Input
-                        type="text"
-                        name="memory"
-                        setInput={setMemory}
-                        required={true}
-                        InputValue={memory}
-                    />
+                    <select
+                        style={{ width: '98%', height: '30px' }}
+                        id="brandSearch"
+                        value={memory}
+                        onChange={(e) => setMemory(e.target.value)}
+                    >
+                        <option value='16GB'>16GB</option>
+                        <option value='32GB'>32GB</option>
+                        <option value='64GB'>64GB</option>
+                        <option value='128GB'>128GB</option>
+                    </select>
                 </InputContainer>
                 
                 <InputContainer>
-                    <InputTitle title="Product Price" />
-                    <Input
-                        type="text"
-                        name="price"
-                        setInput={setPrice}
-                        required={true}
-                        InputValue={price}
-                    />
+                    <InputTitle title="Options" />
+                    <span>
+                        <label>Dual SIM</label>
+                        <input
+                            type="checkbox"
+                            name="Dual SIM"
+                            onChange={()=> setDualSIM(!dualSIM)}
+                            checked={dualSIM}
+                        />
+                    </span>
+
+                    <span style={{ marginLeft: '50px' }}>
+                        <label>NFC</label>
+                        <input
+                            type="checkbox"
+                            name="NFC"
+                            onChange={()=> setNfc(!nfc)}
+                            checked={nfc}
+                        />
+                    </span>
+
+                    <span style={{ marginLeft: '50px' }}>
+                        <label>4G</label>
+                        <input
+                            type="checkbox"
+                            name="4G"
+                            onChange={()=> setFourG(!fourG)}
+                            checked={fourG}
+                        />
+                    </span>
                 </InputContainer>
-                
+
                 <InputContainer>
-                    <Input
-                        styleInput="fileInput"
-                        type="file"
-                        name="image"
-                        setInput={setImage}
-                        required={true}
-                        InputValue={image}
-                    />
+                    <InputTitle title="Screen" />
+                    <fieldset id="screen">
+                        <span>
+                            <label>4"</label>
+                            <input
+                                type="radio"
+                                onChange={() => setScreen4(!screen4)}
+                                value={screen4}
+                                name="screen"
+                            />
+                        </span>
+                        <span style={{ marginLeft: '100px' }}>
+                            <label>5"</label>
+                            <input
+                                type="radio"
+                                name="screen"
+                                onChange={() => setScreen5(!screen5)}
+                                value={screen5}
+                            />
+                        </span>
+                        <span style={{ marginLeft: '60px' }}>
+                            <label>6"</label>
+                            <input
+                                type="radio"
+                                name="screen"
+                                onChange={() => setScreen6(!screen6)}
+                                value={screen6}
+                            />
+                        </span>
+                    </fieldset>
                 </InputContainer>
-                
+
+                <InputContainer>
+                    <InputTitle title="Color" />
+                    <fieldset id="color">
+                        <span>
+                            <label>white</label>
+                            <input
+                                type="radio"
+                                name="color"
+                                onChange={() =>{
+                                    if(!colorBlack && !colorGold){
+                                        setColorWhite(true)
+                                    }else{
+                                        setColorWhite(false) 
+                                    }
+                                }}
+                                value={colorWhite}
+                            />
+                        </span>
+                        <span style={{ marginLeft: '70px' }}>
+                            <label>black</label>
+                            <input
+                                type="radio"
+                                name="color"
+                                onChange={() =>{
+                                    if (!colorWhite && !colorGold) {
+                                        setColorBlack(true)
+                                    } else {
+                                        setColorBlack(false)
+                                    }
+                                }}
+                                value={colorBlack}
+                            />
+                        </span>
+                        <span style={{ marginLeft: '40px' }}>
+                            <label>gold</label>
+                            <input
+                                type="radio"
+                                name="color"
+                                onChange={() => {
+                                    if (!colorWhite && !colorBlack) {
+                                        setColorGold(true)
+                                    } else {
+                                        setColorGold(false)
+                                    }
+                                }}
+                                value={colorGold}
+                            />
+                        </span>
+                    </fieldset>
+                </InputContainer>
+
                 <button className="add_product_form_btn" type="submit">
                     Submit
+                </button>
+                <button className="add_product_form_btn" onClick={()=> history.push('/')}>
+                    Back
                 </button>
             </form>
         </div>

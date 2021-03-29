@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { Redirect } from 'react-router-dom'
-import Header from '../components/Header'
-import ProductDetails from '../components/ProductDetails'
+import Header from './Header'
+import ProductDetails from './ProductDetails'
 import { ProductContext } from '../context/Products'
 
 const SingleProduct = () => {
@@ -14,6 +13,7 @@ const SingleProduct = () => {
         const prod = getProductByID(selectedProduct)
         setProduct(prod)
         setLoading(false)
+        console.log(prod);
     }, [getProductByID, selectedProduct])
 
 
@@ -21,7 +21,7 @@ const SingleProduct = () => {
         return <h2>loading ...</h2>
     }
     if(!loading && !product){
-        return <Redirect to="/" />
+        return ""
     }
 
     return (
@@ -33,9 +33,10 @@ const SingleProduct = () => {
                     <ProductDetails title="Manufacture Year" info={product.year} />
                     <ProductDetails title="Brand" info={product.brand} />
                     <ProductDetails title="Memory" info={product.memory} />
-                    <ProductDetails title="Price" info={product.price} />
+                    <ProductDetails title="Dual SIM" info={product.dualSIM ? 'true' : 'false'} />
+                    <ProductDetails title="NFC" info={product.nfc ? 'true' : 'false'} />
+                    <ProductDetails title="4G" info={product.fourG ? 'true' : 'false'} />
                 </div>
-                <img src={product.image} alt={product.name} />
             </div>
         </main>
     );

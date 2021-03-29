@@ -1,74 +1,59 @@
 {
   "productsJson": [
     {
-      "name": "iphone 6s",
+      "model": "iphone 6s",
       "year": "2015",
-      "brand": "Apple",
+      "brand": "apple",
       "memory": "2GB",
-      "price": "500$",
       "id": 10
     },
     {
-      "name": "test",
+      "model": "test",
       "year": "2010",
       "brand": "sony",
       "memory": "2GB",
-      "price": "200$",
-      "image": "./11.jpg",
       "id": 11
     },
     {
-      "name": "Sony",
+      "model": "Sony",
       "year": "sdf",
-      "brand": "sdf",
+      "brand": "sony",
       "memory": "sdf",
-      "price": "sdf",
-      "image": "",
       "id": 12
     },
     {
-      "name": "Sony Xperia z5",
+      "model": "Sony Xperia z5",
       "year": "2020",
-      "brand": "Sony",
+      "brand": "sony",
       "memory": "8Gb",
-      "price": "500$",
-      "image": "",
       "id": 14
     },
     {
-      "name": "online",
+      "model": "online",
       "year": "2021",
       "brand": "sony",
       "memory": "8Gb",
-      "price": "500$",
-      "image": "",
       "id": 15
     },
     {
-      "name": "yousef",
+      "model": "yousef",
       "year": "2020",
-      "brand": "htc",
+      "brand": "samsung",
       "memory": "5Gb",
-      "price": "566565$",
-      "image": "",
       "id": 17
     },
     {
-      "name": "ahmed",
-      "year": "a",
-      "brand": "a",
-      "memory": "a",
-      "price": "a",
-      "image": "",
+      "model": "asd",
+      "year": "2021",
+      "brand": "nokia",
+      "memory": "16GB",
       "id": 18
     },
     {
-      "name": "last test",
+      "model": "last test",
       "year": "2021",
-      "brand": "Apple",
+      "brand": "apple",
       "memory": "4GB",
-      "price": "600$",
-      "image": "",
       "id": 19
     }
   ]

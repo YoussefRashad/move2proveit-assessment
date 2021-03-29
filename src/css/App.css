@@ -23,7 +23,7 @@ form.add_product_form {
   width: 500px;
   position: relative;
   left: 50%;
-  transform: translate(-50%, 80px);
+  transform: translate(-50%, 20px);
   background: white;
   padding: 20px;
   box-shadow: 0px 0px 8px grey;
@@ -92,17 +92,24 @@ button.add_product_form_btn {
 
 .search_bar_div {
   display: flex;
-  color: white;
+  color: black;
   padding: 15px;
   width: 270px;
   position: absolute;
   top: 67px;
   right: 30px;
 }
+
+.searchForm {
+  display: flex;
+  padding: 15px;
+  width: 270px;
+}
+
 input.search_bar {
   padding: 6px;
   margin-left: 10px;
-  border: none;
+  /* border: none; */
   border-radius: 5px;
   outline: none;
 }

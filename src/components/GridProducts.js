@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Redirect, useHistory } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -29,7 +28,6 @@ const useStyles = makeStyles({
 });
 
 export default function StickyHeadTable() {
-    const history = useHistory()
     const [rows, setRows] = useState([])
     const [loading, setLoading] = useState(false)
     const { filteredProducts: products, setSelectedProduct } = React.useContext(ProductContext)
@@ -41,7 +39,7 @@ export default function StickyHeadTable() {
         setRows([])
         setLoading(true)
         let newRows = products.map(product => {
-            return { brand: product.brand, model: product.name, year: product.year, id: product.id }
+            return { brand: product.brand, model: product.model, year: product.year, id: product.id }
         })
         setRows(prevRows => [...prevRows, ...newRows])
         setLoading(false)
@@ -92,11 +90,7 @@ export default function StickyHeadTable() {
                                         const value = row[column.id];
                                         return (
                                             <TableCell key={column.id} align={column.align} onClick={
-                                                () =>{
-                                                    console.log(row.id)
-                                                    setSelectedProduct(row.id)
-                                                    history.push('/product')
-                                                }
+                                                () => setSelectedProduct(row.id)
                                             }>
                                                 {column.format && typeof value === 'number' ? column.format(value) : value}
                                             </TableCell>
