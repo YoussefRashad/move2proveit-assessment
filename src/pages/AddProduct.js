@@ -22,6 +22,10 @@ const AddProduct = () => {
     const [colorWhite, setColorWhite] = useState(false)
     const [colorBlack, setColorBlack] = useState(false)
     const [colorGold, setColorGold] = useState(false)
+    const [alert, setAlert] = useState({
+        show: false,
+        msg: ''
+    })
 
     const submitHandle = (e)=>{
         e.preventDefault();
@@ -29,7 +33,11 @@ const AddProduct = () => {
         // validation
         if(!model || !year || !brand || !memory){
             // alert
-        }else{
+            setAlert({ show: true, msg: "you should entered all required data .."})
+        }else if (brand) {
+            
+        }
+        else{
             addProduct({ model, year, brand, memory, dualSIM, nfc, fourG })
             history.push('/')
         }
@@ -38,7 +46,6 @@ const AddProduct = () => {
     return (
         <div>
             <h1 className="add_product_page_header">Add Product</h1>
-
             <form onSubmit={submitHandle} className="add_product_form">
                 <InputContainer>
                     <InputTitle title="Model" />
@@ -54,13 +61,30 @@ const AddProduct = () => {
                 
                 <InputContainer>
                     <InputTitle title="Manufacture year" />
-                    <Input
+                    <input
+                        className={" add_product_form_input"}
                         type="text"
                         name="year"
-                        setInput={setYear}
-                        required={true}
-                        InputValue={year}
-                        placeholder="2021"
+                        value={year}
+                        autoComplete={false}
+                        onChange={e =>{
+                            let value = e.target.value
+                            if (value>'9' || value<'0') {
+                                setAlert({
+                                    show: true,
+                                    msg: "you should entered a valid year .."
+                                })
+                            } else {
+                                setAlert({
+                                    show: false,
+                                    msg: ""
+                                })
+                                setYear(e.target.value)
+                            }
+                        }
+                        }
+                        required
+                        placeholder={2021}
                     />
                 </InputContainer>
                 
@@ -211,7 +235,9 @@ const AddProduct = () => {
                         </span>
                     </fieldset>
                 </InputContainer>
-
+                
+                {/* alert msg for empty field */}
+                {alert.show && <h5 style={{color: 'red'}}>{alert.msg}</h5>}
                 <button className="add_product_form_btn" type="submit">
                     Submit
                 </button>
