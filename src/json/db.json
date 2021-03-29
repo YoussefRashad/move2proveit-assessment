@@ -1,0 +1,75 @@
+{
+  "productsJson": [
+    {
+      "name": "iphone 6s",
+      "year": "2015",
+      "brand": "Apple",
+      "memory": "2GB",
+      "price": "500$",
+      "id": 10
+    },
+    {
+      "name": "test",
+      "year": "2010",
+      "brand": "sony",
+      "memory": "2GB",
+      "price": "200$",
+      "image": "./11.jpg",
+      "id": 11
+    },
+    {
+      "name": "Sony",
+      "year": "sdf",
+      "brand": "sdf",
+      "memory": "sdf",
+      "price": "sdf",
+      "image": "",
+      "id": 12
+    },
+    {
+      "name": "Sony Xperia z5",
+      "year": "2020",
+      "brand": "Sony",
+      "memory": "8Gb",
+      "price": "500$",
+      "image": "",
+      "id": 14
+    },
+    {
+      "name": "online",
+      "year": "2021",
+      "brand": "sony",
+      "memory": "8Gb",
+      "price": "500$",
+      "image": "",
+      "id": 15
+    },
+    {
+      "name": "yousef",
+      "year": "2020",
+      "brand": "htc",
+      "memory": "5Gb",
+      "price": "566565$",
+      "image": "",
+      "id": 17
+    },
+    {
+      "name": "ahmed",
+      "year": "a",
+      "brand": "a",
+      "memory": "a",
+      "price": "a",
+      "image": "",
+      "id": 18
+    },
+    {
+      "name": "last test",
+      "year": "2021",
+      "brand": "Apple",
+      "memory": "4GB",
+      "price": "600$",
+      "image": "",
+      "id": 19
+    }
+  ]
+}
