@@ -1,16 +1,17 @@
 {
-  "name": "move2prove",
+  "name": "move2proveit",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-scripts": "3.4.1"
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "@material-ui/core": "^4.11.2"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI= react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

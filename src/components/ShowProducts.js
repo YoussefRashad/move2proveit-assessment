@@ -1,15 +1,15 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { ProductContext } from '../context/Products';
-import ProductDetails from './ProductDetails';
+import GridProducts from './GridProducts'
+import Header from './Header';
 
 const ShowProducts = () => {
-    const { products } = useContext(ProductContext);
+    const { products, setFilteredProducts } = useContext(ProductContext);
     const [searchTerm, setSearchTerm] = useState('');
-    const [filteredProducts, setFilteredProducts] = useState([])
 
     useEffect(() => {
         setFilteredProducts(products)
-    }, [products])
+    }, [products, setFilteredProducts])
 
     useEffect(() => {
         const data = products.filter(product => product.name.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -30,28 +30,9 @@ const ShowProducts = () => {
                 />
             </div>
 
-            <h1 className="products_header_home">Products List</h1>
-
-            <div className="products">
-                {
-                    filteredProducts
-                        .map(product => {
-                            return (
-                                <div className="product" key={product.id}>
-                                    <h1 className="product_head">{product.name}</h1>
-                                    <div className="product_description">
-                                        <ProductDetails title="Manufacture Year" info={product.year}/>
-                                        <ProductDetails title="Brand" info={product.brand} />
-                                        <ProductDetails title="Memory" info={product.memory} />
-                                        <ProductDetails title="Price" info={product.price} />
-                                    </div>
-                                    <img src={product.image} alt={product.name} />
-                                </div>
-                            );
-                        })
-                }
-            </div>
-
+            <Header title="Products List" />
+            <GridProducts />
+            
         </main>
     );
 };
